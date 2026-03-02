@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="What Vitrine Taj creates — kinetic displays, 3D sculpture, original art, seasonal installs. All 100% custom.">
+<title>What We Create — Vitrine Taj</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.displays { padding:5rem 5rem 8rem;background:var(--night); }
+.displays-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(126,184,201,0.06);margin-top:4rem; }
+.display-card { background:var(--night);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .4s;border:1px solid transparent; }
+.display-card::after { content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--orange),var(--blue));transform:scaleX(0);transition:transform .35s;transform-origin:left; }
+.display-card:hover { background:var(--dusk-mid);border-color:rgba(126,184,201,0.1); }
+.display-card:hover::after { transform:scaleX(1); }
+.dc-icon { width:56px;height:56px;border:1px solid rgba(126,184,201,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:2rem;font-size:1.4rem;transition:border-color .3s,transform .4s,box-shadow .3s; }
+.display-card:hover .dc-icon { border-color:var(--blue);transform:rotate(8deg);box-shadow:0 0 18px rgba(126,184,201,0.15); }
+.dc-title { font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;margin-bottom:1rem;line-height:1.2; }
+.dc-desc { font-size:.7rem;line-height:1.95;color:var(--muted-lt); }
+.dc-tag { margin-top:2rem;font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--orange); }
+.dc-num { position:absolute;top:2rem;right:2rem;font-size:.5rem;letter-spacing:.2em;color:rgba(126,184,201,0.08); }
+
+/* Who we serve */
+.serve { padding:8rem 5rem;display:grid;grid-template-columns:1fr 1.4fr;gap:8rem;align-items:start;background:var(--dusk); }
+.serve-list { margin-top:3rem;display:flex;flex-direction:column; }
+.serve-item { display:flex;align-items:center;gap:1.5rem;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.75rem;letter-spacing:.08em;color:var(--muted-lt);transition:color .3s;cursor:default; }
+.serve-item:hover { color:var(--cream); }
+.serve-item::before { content:'';width:.4rem;height:.4rem;background:var(--orange);border-radius:50%;flex-shrink:0;transition:transform .3s; }
+.serve-item:hover::before { transform:scale(1.6); }
+.serve-pull { font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.6rem);font-style:italic;line-height:1.4;color:var(--cream);margin-top:2rem;position:relative;padding-left:2rem; }
+.serve-pull::before { content:'';position:absolute;left:0;top:.3em;width:3px;height:calc(100% - .6em);background:var(--orange); }
+.serve-body { font-size:.77rem;line-height:2;color:var(--muted-lt);margin-top:2rem; }
+.serve-body strong { color:var(--cream);font-weight:400; }
+
+@media(max-width:1024px){
+  .displays { padding:5rem 2.5rem 6rem; }
+  .displays-grid { grid-template-columns:1fr; }
+  .serve { grid-template-columns:1fr;gap:4rem;padding:6rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">Vitrine <span>Taj</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Our Story</a>
+    <a href="services.html">What We Create</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Get a Quote</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="about.html">Our Story</a>
+  <a href="services.html">What We Create</a>
+  <a href="process.html">Process</a>
+  <a href="contact.html">Get a Quote</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow" style="opacity:0;animation:riseIn .8s .2s forwards;">What We Create</div>
+  <h1 style="opacity:0;animation:riseIn .9s .3s forwards;">Every display<br>built from <em>nothing.</em></h1>
+  <p>No templates. No catalogue parts. No off-the-shelf props. <strong>Every Vitrine Taj display is custom designed and custom built</strong> — from the first sketch to the final screw.</p>
+</div>
+
+<section class="displays">
+  <div class="displays-grid">
+    <div class="display-card reveal">
+      <span class="dc-num">001</span>
+      <div class="dc-icon">⚙️</div>
+      <h3 class="dc-title">Kinetic &amp; Automated Displays</h3>
+      <p class="dc-desc">Custom-engineered motion mechanisms — rotating, oscillating, rising and falling — that bring your display to life around the clock. We design and build everything in-house, from the motor logic to the final finish.</p>
+      <p class="dc-tag">→ Motion Design · Automation · Electronics</p>
+    </div>
+    <div class="display-card reveal">
+      <span class="dc-num">002</span>
+      <div class="dc-icon">🖨️</div>
+      <h3 class="dc-title">3D Printed Sculpture &amp; Props</h3>
+      <p class="dc-desc">One-of-a-kind sculptural pieces fabricated specifically for your brand — from intricate geometric forms to figurative characters. Nothing off-the-shelf. Every piece designed to tell your story.</p>
+      <p class="dc-tag">→ Custom Fabrication · Sculpture · 3D Design</p>
+    </div>
+    <div class="display-card reveal">
+      <span class="dc-num">003</span>
+      <div class="dc-icon">🎨</div>
+      <h3 class="dc-title">Painted Art &amp; Illustration</h3>
+      <p class="dc-desc">Hand-painted backdrops, illustrated scenes, and original artwork that give your display depth and atmosphere. A painterly touch that no screen or print can replicate.</p>
+      <p class="dc-tag">→ Fine Art · Hand-Painted · Illustration</p>
+    </div>
+    <div class="display-card reveal">
+      <span class="dc-num">004</span>
+      <div class="dc-icon">✨</div>
+      <h3 class="dc-title">Seasonal &amp; Themed Displays</h3>
+      <p class="dc-desc">Holiday windows, launch campaigns, seasonal refreshes — we design complete themed experiences that keep your storefront feeling current and alive all year round.</p>
+      <p class="dc-tag">→ Seasonal · Campaign · Refresh</p>
+    </div>
+    <div class="display-card reveal">
+      <span class="dc-num">005</span>
+      <div class="dc-icon">📐</div>
+      <h3 class="dc-title">Concept &amp; Brand Storytelling</h3>
+      <p class="dc-desc">Before anything is built, we develop the narrative. What's the mood? The palette? The one thing a passerby should feel? We art-direct the full concept so every element works together.</p>
+      <p class="dc-tag">→ Art Direction · Concept · Brand</p>
+    </div>
+    <div class="display-card reveal">
+      <span class="dc-num">006</span>
+      <div class="dc-icon">🔧</div>
+      <h3 class="dc-title">Full Install &amp; Setup</h3>
+      <p class="dc-desc">We handle delivery, installation, and testing ourselves. Your display arrives turnkey — everything secured, motion tested, and ready to run. Maintenance and seasonal swap-outs available.</p>
+      <p class="dc-tag">→ Installation · Maintenance · Support</p>
+    </div>
+  </div>
+</section>
+
+<section class="serve">
+  <div class="serve-left reveal">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-heading">Made for<br><em>independent</em><br>shops.</h2>
+    <div class="serve-list">
+      <div class="serve-item">Clothing &amp; fashion boutiques</div>
+      <div class="serve-item">Florists &amp; plant shops</div>
+      <div class="serve-item">Jewelry &amp; accessories</div>
+      <div class="serve-item">Bookshops &amp; gift stores</div>
+      <div class="serve-item">Bakeries &amp; food retailers</div>
+      <div class="serve-item">Spas, studios &amp; wellness</div>
+      <div class="serve-item">Any shop with a great story to tell</div>
+    </div>
+  </div>
+  <div class="serve-right reveal">
+    <div class="serve-pull">"Big brands spend millions making people feel something. Your window can do the same — for a fraction of the cost."</div>
+    <div class="serve-body">
+      <p>We work exclusively with <strong>small and independent shops</strong> — the kind of businesses where the owner actually cares about every customer who walks through the door.</p>
+      <p style="margin-top:1.2rem">You don't need a huge budget or a massive storefront. You need a window that <strong>stops one person, then another, then another.</strong> That's what we build.</p>
+    </div>
+    <div style="margin-top:2.5rem;"><a href="contact.html" class="btn-fill"><span>Start a Project</span></a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Vitrine <span>Taj</span></div>
+  <div class="footer-tagline">Engineering Wonder · Custom Window Displays</div>
+  <div class="footer-copy">© 2026 Taj LLC</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

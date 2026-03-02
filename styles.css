@@ -1,0 +1,126 @@
+/*
+  VITRINE TAJ — Shared Stylesheet
+  Color Philosophy:
+  Charcoal black  #0a0907  the stage
+  Burnt orange    #c4512a  warmth, craft, CTAs
+  Slate blue      #7eb8c9  glass, sky, precision
+  Antique gold    #c9953a  bridges warm & cool
+  Warm cream      #f0e8d8  artisanal, readable
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400&display=swap');
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+:root {
+  --night:      #0a0907;
+  --dusk:       #161310;
+  --dusk-mid:   #1e1a15;
+  --cream:      #f0e8d8;
+  --orange:     #c4512a;
+  --blue:       #7eb8c9;
+  --blue-deep:  #4a8fa3;
+  --blue-dim:   rgba(126,184,201,0.1);
+  --gold:       #c9953a;
+  --muted:      #7a7060;
+  --muted-lt:   #9a8f80;
+}
+
+body {
+  background: var(--night);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* CURSOR */
+.cur { width:9px;height:9px;background:var(--blue);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s,background .2s;mix-blend-mode:screen; }
+.cur-r { width:34px;height:34px;border:1px solid rgba(126,184,201,0.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .35s ease; }
+
+/* NAV */
+nav { position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 5rem;background:linear-gradient(to bottom,rgba(10,9,7,.92) 0%,transparent 100%);backdrop-filter:blur(4px);border-bottom:1px solid transparent;transition:background .3s,border-color .3s; }
+nav.scrolled { background:rgba(10,9,7,0.96);border-bottom-color:rgba(126,184,201,0.1); }
+.nav-logo { font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;letter-spacing:.12em;color:var(--cream);text-decoration:none; }
+.nav-logo span { color:var(--blue);font-style:italic; }
+.nav-links { display:flex;gap:2.5rem; }
+.nav-links a { font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);text-decoration:none;opacity:.5;transition:opacity .3s;position:relative;padding-bottom:2px; }
+.nav-links a::after { content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--blue);transform:scaleX(0);transition:transform .3s;transform-origin:left; }
+.nav-links a:hover { opacity:1; }
+.nav-links a:hover::after,.nav-links a.active::after { transform:scaleX(1); }
+.nav-links a.active { opacity:1; }
+.nav-cta { font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.65rem 1.6rem;border:1px solid var(--blue-deep);color:var(--blue);text-decoration:none;transition:all .3s; }
+.nav-cta:hover { background:var(--blue-deep);color:var(--night); }
+
+/* MOBILE NAV */
+.nav-hamburger { display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:.5rem; }
+.nav-hamburger span { display:block;width:22px;height:1px;background:var(--cream);transition:all .3s; }
+.nav-drawer { display:none;position:fixed;inset:0;background:var(--night);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .3s; }
+.nav-drawer.open { opacity:1;pointer-events:all; }
+.nav-drawer a { font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-lt);text-decoration:none;transition:color .3s; }
+.nav-drawer a:hover { color:var(--cream); }
+
+/* BUTTONS */
+.btn-fill { padding:1rem 2.8rem;background:var(--orange);color:var(--cream);font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:none;cursor:none;position:relative;overflow:hidden;transition:all .3s;display:inline-block; }
+.btn-fill::after { content:'';position:absolute;inset:0;background:var(--blue-deep);transform:translateX(-101%);transition:transform .35s ease; }
+.btn-fill:hover::after { transform:translateX(0); }
+.btn-fill span { position:relative;z-index:1; }
+.btn-ghost { font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.8rem 2rem;border:1px solid rgba(126,184,201,0.3);color:var(--blue);text-decoration:none;transition:all .3s;display:inline-block; }
+.btn-ghost:hover { border-color:var(--blue);background:var(--blue-dim);color:var(--cream); }
+.btn-line { font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-lt);text-decoration:none;border-bottom:1px solid transparent;transition:all .3s;padding-bottom:2px; }
+.btn-line:hover { color:var(--blue);border-color:var(--blue); }
+
+/* SECTION SHARED */
+.section-label { display:flex;align-items:center;gap:1rem;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem; }
+.section-label::after { content:'';flex:0 0 2rem;height:1px;background:var(--blue); }
+.section-heading { font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.8rem);font-weight:400;line-height:1.1; }
+.section-heading em { font-style:italic;color:var(--gold); }
+
+/* PAGE HERO (inner pages) */
+.page-hero { padding:calc(7rem + 4vw) 5rem 5rem; }
+.page-hero-eyebrow { font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem; }
+.page-hero-eyebrow::before { content:'';width:2rem;height:1px;background:var(--blue); }
+.page-hero h1 { font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,7rem);font-weight:400;line-height:1.0;opacity:0;animation:riseIn .9s .3s forwards; }
+.page-hero h1 em { font-style:italic;color:var(--gold); }
+.page-hero p { font-size:.82rem;line-height:2.1;color:var(--muted-lt);max-width:560px;margin-top:2rem;opacity:0;animation:riseIn .9s .5s forwards; }
+.page-hero p strong { color:var(--cream);font-weight:400; }
+
+/* FOOTER */
+footer { padding:2.5rem 5rem;background:var(--night);border-top:1px solid rgba(126,184,201,0.08);display:flex;justify-content:space-between;align-items:center;position:relative; }
+footer::before { content:'';position:absolute;top:-1px;left:5rem;right:5rem;height:1px;background:linear-gradient(to right,transparent,var(--blue-deep),transparent);opacity:.3; }
+.footer-logo { font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:.12em; }
+.footer-logo span { color:var(--blue);font-style:italic; }
+.footer-tagline { font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted); }
+.footer-copy { font-size:.55rem;letter-spacing:.1em;color:var(--muted); }
+
+/* SCROLL REVEAL */
+.reveal { opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease; }
+.reveal.visible { opacity:1;transform:none; }
+
+/* ANIMATIONS */
+@keyframes riseIn { from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)} }
+@keyframes floatShape { 0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-18px) rotate(calc(var(--r,0deg) + 8deg))} }
+@keyframes orbit { from{transform:rotate(0deg)}to{transform:rotate(360deg)} }
+@keyframes spinSlow { from{transform:rotate(0deg)}to{transform:rotate(360deg)} }
+@keyframes lightPulse { from{opacity:.7}to{opacity:1} }
+@keyframes tickerRoll { from{transform:translateX(0)}to{transform:translateX(-50%)} }
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav { padding:1.5rem 2.5rem; }
+  .nav-links,.nav-cta { display:none; }
+  .nav-hamburger { display:flex; }
+  .nav-drawer { display:flex; }
+  .page-hero { padding:8rem 2.5rem 4rem; }
+  footer { padding:2rem 2.5rem;flex-direction:column;gap:1rem;text-align:center; }
+}
+@media(max-width:600px){
+  footer { padding:2rem 1.5rem; }
+}

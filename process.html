@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How Vitrine Taj works — from first conversation to opening night.">
+<title>Process — Vitrine Taj</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.process { padding:5rem 5rem 8rem;position:relative;overflow:hidden; }
+.process-steps { display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;margin-top:5rem;position:relative; }
+.process-steps::before { content:'';position:absolute;top:1.2rem;left:0;right:0;height:1px;background:linear-gradient(to right,var(--orange),var(--blue-deep),transparent);opacity:.35; }
+.ps { position:relative;padding-top:3rem; }
+.ps-dot { position:absolute;top:0;left:0;width:1.5rem;height:1.5rem;border-radius:50%;border:1px solid var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(126,184,201,0.2); }
+.ps-dot::after { content:'';width:.5rem;height:.5rem;border-radius:50%;background:var(--blue); }
+.ps-num { font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem; }
+.ps-title { font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:1rem; }
+.ps-body { font-size:.68rem;line-height:1.95;color:var(--muted-lt); }
+
+/* Detail blocks */
+.detail-blocks { padding:0 5rem 8rem;display:flex;flex-direction:column;gap:2px;background:rgba(126,184,201,0.04); }
+.detail-block { background:var(--night);display:grid;grid-template-columns:4rem 1fr 2fr;gap:4rem;padding:3.5rem;border:1px solid transparent;transition:background .3s,border-color .3s;align-items:start; }
+.detail-block:hover { background:var(--dusk);border-color:rgba(126,184,201,0.1); }
+.detail-block-num { font-family:'Playfair Display',serif;font-size:3rem;font-weight:400;color:rgba(126,184,201,0.15);line-height:1; }
+.detail-block-title { font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;margin-bottom:.8rem; }
+.detail-block-sub { font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue); }
+.detail-block-body { font-size:.75rem;line-height:2;color:var(--muted-lt); }
+.detail-block-body strong { color:var(--cream);font-weight:400; }
+.detail-block-body p+p { margin-top:1rem; }
+
+/* FAQ */
+.faq { padding:8rem 5rem;background:var(--dusk); }
+.faq-list { margin-top:3rem;max-width:760px; }
+.faq-item { border-bottom:1px solid rgba(126,184,201,0.1); }
+.faq-q { display:flex;justify-content:space-between;align-items:center;padding:1.6rem 0;font-size:.8rem;letter-spacing:.05em;color:var(--cream);cursor:none;gap:2rem; }
+.faq-q::after { content:'+';font-size:1.2rem;color:var(--blue);flex-shrink:0;transition:transform .3s; }
+.faq-item.open .faq-q::after { transform:rotate(45deg); }
+.faq-a { font-size:.72rem;line-height:2;color:var(--muted-lt);max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease; }
+.faq-item.open .faq-a { max-height:300px;padding-bottom:1.5rem; }
+
+@media(max-width:1024px){
+  .process { padding:5rem 2.5rem 6rem; }
+  .process-steps { grid-template-columns:1fr 1fr; }
+  .detail-blocks { padding:0 2.5rem 6rem; }
+  .detail-block { grid-template-columns:2.5rem 1fr;grid-template-rows:auto auto;gap:1.5rem 2rem;padding:2.5rem; }
+  .detail-block-body { grid-column:2; }
+  .faq { padding:6rem 2.5rem; }
+}
+@media(max-width:600px){
+  .process-steps { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">Vitrine <span>Taj</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Our Story</a>
+    <a href="services.html">What We Create</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Get a Quote</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="about.html">Our Story</a>
+  <a href="services.html">What We Create</a>
+  <a href="process.html">Process</a>
+  <a href="contact.html">Get a Quote</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow" style="opacity:0;animation:riseIn .8s .2s forwards;">How It Works</div>
+  <h1 style="opacity:0;animation:riseIn .9s .3s forwards;">From first conversation<br>to <em>opening night.</em></h1>
+  <p>Every project is different — but the journey follows the same four steps. <strong>You're involved at every stage</strong>, and nothing gets built without your sign-off.</p>
+</div>
+
+<section class="process">
+  <div class="process-steps">
+    <div class="ps reveal">
+      <div class="ps-dot"></div>
+      <div class="ps-num">Step 01</div>
+      <h3 class="ps-title">Discovery Call</h3>
+      <p class="ps-body">We learn about your shop, your customers, your brand, and the story you want your window to tell. No brief needed — just a conversation.</p>
+    </div>
+    <div class="ps reveal">
+      <div class="ps-dot"></div>
+      <div class="ps-num">Step 02</div>
+      <h3 class="ps-title">Concept &amp; Design</h3>
+      <p class="ps-body">We develop mood boards, sketches, and 3D previews of your display. You see and approve everything before we build a single piece.</p>
+    </div>
+    <div class="ps reveal">
+      <div class="ps-dot"></div>
+      <div class="ps-num">Step 03</div>
+      <h3 class="ps-title">Build &amp; Fabricate</h3>
+      <p class="ps-body">We fabricate all elements in our studio — printing, painting, engineering, and assembling every component by hand. Progress updates throughout.</p>
+    </div>
+    <div class="ps reveal">
+      <div class="ps-dot"></div>
+      <div class="ps-num">Step 04</div>
+      <h3 class="ps-title">Install &amp; Launch</h3>
+      <p class="ps-body">We come to you, set up everything, test all motion and lighting, and hand over a window that's ready to run. Ongoing support always available.</p>
+    </div>
+  </div>
+</section>
+
+<div class="detail-blocks">
+  <div class="detail-block reveal">
+    <div class="detail-block-num">01</div>
+    <div>
+      <div class="detail-block-sub">Week 1</div>
+      <div class="detail-block-title">Discovery Call</div>
+    </div>
+    <div class="detail-block-body">
+      <p>We start with a free, no-pressure conversation. Tell us about your shop — your brand, your customers, what you sell, what you want people to feel. <strong>No formal brief needed.</strong> We ask the right questions.</p>
+      <p>By the end of the call, we'll have a clear sense of what your window could become — and you'll have a sense of whether we're the right fit.</p>
+    </div>
+  </div>
+  <div class="detail-block reveal">
+    <div class="detail-block-num">02</div>
+    <div>
+      <div class="detail-block-sub">Weeks 2–3</div>
+      <div class="detail-block-title">Concept &amp; Design</div>
+    </div>
+    <div class="detail-block-body">
+      <p>We develop a full concept — mood boards, colour palette, structural sketches, and where applicable, 3D previews of the final display. <strong>You review and approve everything</strong> before a single component is fabricated.</p>
+      <p>This is where the magic starts. You'll see your window taking shape for the first time.</p>
+    </div>
+  </div>
+  <div class="detail-block reveal">
+    <div class="detail-block-num">03</div>
+    <div>
+      <div class="detail-block-sub">Weeks 4–7</div>
+      <div class="detail-block-title">Build &amp; Fabricate</div>
+    </div>
+    <div class="detail-block-body">
+      <p>We print, paint, engineer, wire, and assemble every element of your display in our studio. <strong>Progress photos and updates throughout</strong> — you're never left wondering what's happening.</p>
+      <p>Every kinetic component is tested extensively before we pack it up. Nothing leaves the studio until it works perfectly.</p>
+    </div>
+  </div>
+  <div class="detail-block reveal">
+    <div class="detail-block-num">04</div>
+    <div>
+      <div class="detail-block-sub">Final Week</div>
+      <div class="detail-block-title">Install &amp; Launch</div>
+    </div>
+    <div class="detail-block-body">
+      <p>We come to you. We set everything up, test every motion sequence, adjust lighting, and make sure it looks exactly right in your actual window. <strong>We don't leave until it's perfect.</strong></p>
+      <p>After install, you get a complete handover — how everything works, how to turn it on and off, and how to reach us if anything ever needs attention.</p>
+    </div>
+  </div>
+</div>
+
+<section class="faq">
+  <div class="reveal">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-heading">Things people<br>usually <em>ask us.</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q">How long does a project take?</div>
+      <div class="faq-a">Most projects run 6–8 weeks from discovery call to install. Simpler displays can be faster; more complex kinetic builds may take a little longer. We'll give you a clear timeline after our first conversation.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Do I need to know what I want before reaching out?</div>
+      <div class="faq-a">Not at all. Many of our clients come to us with nothing more than "I want my window to feel magical." That's enough to start. We're good at drawing ideas out through conversation.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What does it cost?</div>
+      <div class="faq-a">Every project is custom, so pricing varies. We'll discuss budget openly in our first call — there's no awkwardness about it. We work with a range of budgets and will always be honest about what's achievable.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Do you do seasonal swaps?</div>
+      <div class="faq-a">Yes. Many clients work with us on an ongoing basis — updating their display for the holidays, new seasons, or product launches. We offer maintenance and swap-out packages.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Do you travel for installs?</div>
+      <div class="faq-a">Yes. We travel to install every display ourselves — we won't ship you a crate and wish you luck. Travel costs are factored into the project quote.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Vitrine <span>Taj</span></div>
+  <div class="footer-tagline">Engineering Wonder · Custom Window Displays</div>
+  <div class="footer-copy">© 2026 Taj LLC</div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

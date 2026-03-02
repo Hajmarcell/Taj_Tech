@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vitrine Taj — Fully custom window displays for small shops. Kinetic motion, 3D-printed sculpture, and original art. Nothing off the shelf.">
+<title>Vitrine Taj — Custom Window Displays</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── HOME-ONLY STYLES ── */
+.hero { min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden; }
+.hero::before { content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+
+.hero-left { display:flex;flex-direction:column;justify-content:center;padding:10rem 5rem 6rem;position:relative;z-index:2; }
+.hero-left::before { content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 0% 65%,rgba(126,184,201,0.04) 0%,transparent 65%); }
+
+.hero-tag { display:inline-flex;align-items:center;gap:.8rem;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:2.5rem;opacity:0;animation:riseIn .8s .2s forwards; }
+.hero-tag::before { content:'';width:2rem;height:1px;background:var(--blue); }
+
+.hero-title { font-family:'Playfair Display',serif;font-size:clamp(3.2rem,5.5vw,6rem);font-weight:400;line-height:1.05;letter-spacing:-.01em;opacity:0;animation:riseIn .9s .4s forwards; }
+.hero-title em { font-style:italic;color:var(--gold);display:block; }
+
+.hero-divider { width:3rem;height:1px;background:linear-gradient(to right,var(--orange),var(--blue));margin:2.5rem 0;opacity:0;animation:riseIn .8s .6s forwards; }
+
+.hero-sub { font-size:.8rem;line-height:2;color:var(--muted-lt);max-width:420px;opacity:0;animation:riseIn .9s .7s forwards; }
+.hero-sub strong { color:var(--cream);font-weight:400; }
+
+.hero-actions { margin-top:3rem;display:flex;gap:1.5rem;align-items:center;opacity:0;animation:riseIn .9s .9s forwards; }
+
+/* Window scene */
+.hero-right { position:relative;overflow:hidden;background:var(--night); }
+.scene-bg { position:absolute;inset:0;background:radial-gradient(ellipse at 60% 15%,rgba(74,143,163,0.12) 0%,transparent 50%),radial-gradient(ellipse at 40% 85%,rgba(196,81,42,0.08) 0%,transparent 50%),radial-gradient(ellipse at 60% 40%,#1a1208 0%,#0a0907 70%); }
+.window-wrap { position:absolute;top:12%;left:8%;right:8%;bottom:8%; }
+.w-frame-outer { position:absolute;inset:0;border:10px solid #1e1710;box-shadow:inset 0 0 30px rgba(0,0,0,.6),0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(201,149,58,0.08); }
+.w-bar-v { position:absolute;top:0;bottom:0;left:50%;width:8px;background:#1e1710;transform:translateX(-50%);z-index:10; }
+.w-bar-h { position:absolute;left:0;right:0;top:42%;height:8px;background:#1e1710;z-index:10; }
+.w-glass { position:absolute;inset:10px;overflow:hidden;background:linear-gradient(180deg,rgba(6,14,16,1) 0%,rgba(8,8,14,1) 45%,rgba(14,8,6,1) 100%); }
+.w-glass::before { content:'';position:absolute;top:0;left:0;right:0;height:55%;background:radial-gradient(ellipse at 50% 0%,rgba(74,143,163,0.22) 0%,transparent 70%);pointer-events:none; }
+.w-glass::after  { content:'';position:absolute;bottom:0;left:0;right:0;height:45%;background:radial-gradient(ellipse at 50% 100%,rgba(196,81,42,0.18) 0%,transparent 65%);pointer-events:none; }
+.display-scene { position:absolute;inset:0;overflow:hidden; }
+.d-light { position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,149,58,0.07) 0%,transparent 65%);animation:lightPulse 5s ease-in-out infinite alternate; }
+.d-shape { position:absolute;border:1.5px solid;animation:floatShape var(--dur,7s) ease-in-out infinite;animation-delay:var(--delay,0s); }
+.s1{width:70px;height:70px;top:18%;left:15%;border-color:rgba(126,184,201,0.55);transform:rotate(12deg);--dur:8s;--r:12deg;}
+.s2{width:100px;height:100px;top:42%;left:52%;border-radius:50%;border-color:rgba(201,149,58,0.38);--dur:6s;--delay:-2s;}
+.s3{width:50px;height:50px;top:68%;left:22%;border-color:rgba(196,81,42,0.65);transform:rotate(45deg);--dur:9s;--delay:-4s;--r:45deg;}
+.s4{width:30px;height:30px;top:22%;left:68%;border-color:rgba(126,184,201,0.35);--dur:7s;--delay:-1s;}
+.s5{width:80px;height:80px;top:55%;left:70%;border-color:rgba(201,149,58,0.32);transform:rotate(22deg);--dur:11s;--delay:-3s;--r:22deg;}
+.d-orbit { position:absolute;top:50%;left:50%;width:140px;height:140px;margin:-70px 0 0 -70px;animation:orbit 12s linear infinite;opacity:.35; }
+.d-orbit::before { content:'';position:absolute;top:0;left:50%;width:5px;height:5px;background:var(--blue);border-radius:50%;margin-left:-2.5px;box-shadow:0 0 10px var(--blue); }
+.d-gear { position:absolute;top:30%;left:35%;width:90px;height:90px;animation:spinSlow 25s linear infinite;opacity:.28; }
+.gear-ring { position:absolute;inset:15%;border-radius:50%;border:2px solid var(--orange); }
+.gear-spoke { position:absolute;top:50%;left:50%;width:100%;height:2px;background:var(--orange);transform-origin:left center;margin-top:-1px; }
+.w-nameplate { position:absolute;bottom:5%;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(240,232,216,.38);white-space:nowrap;z-index:11;text-shadow:0 0 20px rgba(126,184,201,0.3); }
+.w-reflect  { position:absolute;top:0;left:10%;width:2px;height:100%;background:linear-gradient(to bottom,transparent,rgba(126,184,201,.07) 40%,transparent);transform:skew(-8deg); }
+.w-reflect2 { position:absolute;top:0;left:25%;width:1px;height:60%;background:linear-gradient(to bottom,rgba(126,184,201,.05),transparent);transform:skew(-5deg); }
+.ticker-wrap { position:absolute;bottom:0;left:0;right:0;background:var(--orange);overflow:hidden;z-index:20;padding:.5rem 0; }
+.ticker-track { display:flex;white-space:nowrap;gap:3rem;animation:tickerRoll 22s linear infinite;font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(240,232,216,.9); }
+
+/* Callout strip */
+.callout-strip { background:var(--dusk-mid);border-top:1px solid rgba(126,184,201,0.1);border-bottom:1px solid rgba(126,184,201,0.1);padding:1.4rem 5rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap; }
+.callout-strip span { font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:.7rem; }
+.callout-strip span::before { content:'';width:.38rem;height:.38rem;background:var(--orange);border-radius:50%;flex-shrink:0; }
+.callout-strip .sep { width:1px;height:1.2rem;background:rgba(126,184,201,.15);flex-shrink:0;display:block; }
+.callout-strip .sep::before { display:none; }
+
+/* Intro preview strip */
+.intro { padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;background:var(--dusk); }
+.intro-text { font-size:.82rem;line-height:2.1;color:var(--muted-lt);margin-top:2rem; }
+.intro-text p+p { margin-top:1.4rem; }
+.intro-text strong { color:var(--cream);font-weight:400; }
+.intro-stats { display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(126,184,201,0.06); }
+.stat-cell { background:var(--dusk);padding:2.5rem 2rem;border:1px solid transparent;transition:background .3s,border-color .3s; }
+.stat-cell:hover { background:var(--dusk-mid);border-color:rgba(126,184,201,0.15); }
+.stat-num { font-family:'Playfair Display',serif;font-size:3rem;font-weight:400;line-height:1;margin-bottom:.5rem;background:linear-gradient(135deg,var(--gold),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.stat-label { font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted); }
+
+/* CTA banner */
+.cta-band { padding:7rem 5rem;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;position:relative;overflow:hidden; }
+.cta-band::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(196,81,42,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(126,184,201,0.04) 0%,transparent 50%);pointer-events:none; }
+.cta-band h2 { font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4vw,5rem);font-weight:400;line-height:1.05; }
+.cta-band h2 em { color:var(--gold);font-style:italic; }
+.cta-band-actions { display:flex;flex-direction:column;gap:1rem;align-items:flex-end; }
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{height:70vw;}
+  .hero-left{padding:9rem 2.5rem 5rem;}
+  .intro{grid-template-columns:1fr;gap:3rem;padding:6rem 2.5rem;}
+  .callout-strip{padding:1.2rem 2.5rem;gap:1.5rem;}
+  .cta-band{grid-template-columns:1fr;gap:2.5rem;padding:6rem 2.5rem;}
+  .cta-band-actions{align-items:flex-start;}
+}
+@media(max-width:600px){
+  .callout-strip .sep{display:none;}
+  .intro-stats{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">Vitrine <span>Taj</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Our Story</a>
+    <a href="services.html">What We Create</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Get a Quote</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="about.html">Our Story</a>
+  <a href="services.html">What We Create</a>
+  <a href="process.html">Process</a>
+  <a href="contact.html">Get a Quote</a>
+</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Bespoke Window Displays — Designed &amp; Built for You</p>
+    <h1 class="hero-title">Make them<br>stop.<br><em>Make them look.</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub"><strong>Vitrine Taj</strong> designs and builds <strong>fully custom window displays</strong> for small shops — every display conceived, engineered, and handcrafted from scratch, just for you. Kinetic motion, 3D-printed sculpture, and original art that <strong>draws people in before they even know why.</strong></p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-fill"><span>Request a Quote</span></a>
+      <a href="about.html" class="btn-line">Our Story →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="scene-bg"></div>
+    <div class="window-wrap">
+      <div class="w-frame-outer"></div>
+      <div class="w-bar-v"></div><div class="w-bar-h"></div>
+      <div class="w-glass">
+        <div class="display-scene">
+          <div class="d-light"></div>
+          <div class="d-shape s1"></div><div class="d-shape s2"></div>
+          <div class="d-shape s3"></div><div class="d-shape s4"></div><div class="d-shape s5"></div>
+          <div class="d-orbit"></div>
+          <div class="d-gear"><div class="gear-ring"></div><div class="gear-spoke" style="transform:rotate(0deg)"></div><div class="gear-spoke" style="transform:rotate(60deg)"></div><div class="gear-spoke" style="transform:rotate(120deg)"></div></div>
+          <div class="w-reflect"></div><div class="w-reflect2"></div>
+        </div>
+        <div class="w-nameplate">La Boutique</div>
+      </div>
+    </div>
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <span>100% Custom Designed</span><span>·</span><span>3D Printed Sculpture</span><span>·</span><span>Automated Motion</span><span>·</span><span>Built for Small Shops</span><span>·</span><span>Engineering &amp; Art</span><span>·</span><span>Nothing Off The Shelf</span><span>·</span>
+        <span>100% Custom Designed</span><span>·</span><span>3D Printed Sculpture</span><span>·</span><span>Automated Motion</span><span>·</span><span>Built for Small Shops</span><span>·</span><span>Engineering &amp; Art</span><span>·</span><span>Nothing Off The Shelf</span><span>·</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="callout-strip">
+  <span>Every display designed from scratch — no templates, no off-the-shelf parts</span>
+  <div class="sep"></div>
+  <span>Custom engineered &amp; hand-built, just for your shop</span>
+  <div class="sep"></div>
+  <span>No two displays are ever alike</span>
+</div>
+
+<section class="intro">
+  <div class="reveal">
+    <div class="section-label">Why Vitrine Taj</div>
+    <h2 class="section-heading">Your window is your<br>loudest voice on<br>the street. <em>Use it.</em></h2>
+    <div class="intro-text">
+      <p>Big brands spend millions making people feel something the moment they walk past a store. That same feeling — wonder, curiosity, the pull to stop and look — is available to every independent shop.</p>
+      <p>We build <strong>fully custom window displays</strong> that blend kinetic engineering with original art. Every piece is designed from the ground up for your brand. <strong>Nothing we make exists anywhere else.</strong></p>
+    </div>
+    <div style="margin-top:2.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;">
+      <a href="about.html" class="btn-fill"><span>Meet the Makers</span></a>
+      <a href="services.html" class="btn-ghost">See What We Create →</a>
+    </div>
+  </div>
+  <div class="intro-stats reveal">
+    <div class="stat-cell hoverable"><div class="stat-num">100%</div><div class="stat-label">Custom — every project</div></div>
+    <div class="stat-cell hoverable"><div class="stat-num">0</div><div class="stat-label">Off-the-shelf parts used</div></div>
+    <div class="stat-cell hoverable"><div class="stat-num">2</div><div class="stat-label">Engineers &amp; artists behind every build</div></div>
+    <div class="stat-cell hoverable"><div class="stat-num">∞</div><div class="stat-label">Possible designs — starts with you</div></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="reveal">
+    <h2><em>Ready to make your<br>window unforgettable?</em></h2>
+  </div>
+  <div class="cta-band-actions reveal">
+    <a href="contact.html" class="btn-fill"><span>Start a Project</span></a>
+    <a href="process.html" class="btn-line">See How It Works →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Vitrine <span>Taj</span></div>
+  <div class="footer-tagline">Engineering Wonder · Custom Window Displays</div>
+  <div class="footer-copy">© 2026 Taj LLC</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
