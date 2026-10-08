@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,6 +133,556 @@
   font-size:.75rem;
   font-weight:300;
   outline:none;
-  transition:border-color .3s,background
-```
+  transition:border-color .3s,background .3s;
+  cursor:none;
+  appearance:none;
+}
 
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  border-color:var(--gold);
+  background:rgba(201,149,58,0.04);
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color:rgba(240,232,216,0.2);
+}
+
+.form-row select option {
+  background:var(--dusk);
+}
+
+.form-row textarea {
+  resize:vertical;
+  min-height:130px;
+}
+
+.form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+
+/* Checkbox group */
+.checkbox-group {
+  display:flex;
+  flex-direction:column;
+  gap:.7rem;
+  margin-top:.5rem;
+}
+
+.checkbox-label {
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  font-size:.68rem;
+  color:var(--muted-lt);
+  cursor:none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width:14px;
+  height:14px;
+  accent-color:var(--orange);
+  cursor:none;
+}
+
+.checkbox-label:hover {
+  color:var(--cream);
+}
+
+.form-submit {
+  width:100%;
+  padding:1.1rem;
+  background:var(--orange);
+  border:none;
+  color:var(--cream);
+  font-family:'Jost',sans-serif;
+  font-size:.6rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  cursor:none;
+  margin-top:.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:background .3s;
+}
+
+.form-submit::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:var(--blue-deep);
+  transform:translateX(-101%);
+  transition:transform .35s ease;
+}
+
+.form-submit:hover::after {
+  transform:translateX(0);
+}
+
+.form-submit span {
+  position:relative;
+  z-index:1;
+}
+
+.form-submit:disabled {
+  opacity:.6;
+  cursor:wait;
+}
+
+.success-msg {
+  display:none;
+  text-align:center;
+  padding:3rem 2rem;
+}
+
+.success-msg h3 {
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  font-weight:400;
+  margin-bottom:1rem;
+}
+
+.success-msg h3 em {
+  color:var(--gold);
+  font-style:italic;
+}
+
+.success-msg p {
+  font-size:.75rem;
+  line-height:2;
+  color:var(--muted-lt);
+}
+
+@media(max-width:1024px) {
+  .contact {
+    grid-template-columns:1fr;
+    gap:4rem;
+    padding:5rem 2.5rem 6rem;
+  }
+}
+
+@media(max-width:600px) {
+  .form-grid {
+    grid-template-columns:1fr;
+  }
+
+  .quote-form {
+    padding:2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">
+    Taj <span>Tech <span>Design </span></span>
+  </a>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Our Story</a>
+    <a href="services.html">What We Create</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Get a Quote</a>
+  </div>
+
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="about.html">Our Story</a>
+  <a href="services.html">What We Create</a>
+  <a href="process.html">Process</a>
+  <a href="contact.html">Get a Quote</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow" style="opacity:0;animation:riseIn .8s .2s forwards;">
+    Get In Touch
+  </div>
+
+  <h1 style="opacity:0;animation:riseIn .9s .3s forwards;">
+    Let's make your<br>window <em>unforgettable.</em>
+  </h1>
+
+  <p>
+    Every project starts with a conversation. Tell us about your shop and what you're dreaming of —
+    <strong>there's no project too small or too wild.</strong>
+  </p>
+</div>
+
+<section class="contact">
+
+  <div class="contact-left reveal">
+
+    <div class="section-label">Before You Write</div>
+
+    <h2 class="section-heading">
+      A few things<br>good to <em>know.</em>
+    </h2>
+
+    <div class="contact-intro">
+      <p>
+        We respond to every enquiry personally — usually within 24 hours.
+        The form on the right takes about two minutes to fill in and helps us
+        understand your project before we talk.
+      </p>
+
+      <p style="margin-top:1.2rem">
+        Not sure what you want yet? That's completely fine.
+        <strong>Send us something vague.</strong>
+        "I want my window to feel like a fairytale" is a great brief.
+        We're good at running with that.
+      </p>
+    </div>
+
+    <div class="contact-details">
+      <div class="cd-row">
+        <span class="cd-label">Email</span>
+        <span class="cd-val">Tajtechdesign@gmail.com</span>
+      </div>
+
+      <div class="cd-row">
+        <span class="cd-label">Instagram</span>
+        <span class="cd-val">@Tajtechdesign</span>
+      </div>
+
+      <div class="cd-row">
+        <span class="cd-label">Every display</span>
+        <span class="cd-val">Custom designed from scratch</span>
+      </div>
+
+      <div class="cd-row">
+        <span class="cd-label">Response</span>
+        <span class="cd-val">Usually within 24 hours</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:3rem;">
+      Why Work With Us
+    </div>
+
+    <div class="why-list">
+
+      <div class="why-item">
+        <div class="why-item-text">
+          <strong>Nothing off the shelf</strong> — every display is designed from scratch for your shop.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-text">
+          <strong>You approve everything</strong> before we build a single component.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-text">
+          <strong>We install it ourselves</strong> — no shipping crates, no DIY assembly.
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-text">
+          <strong>Ongoing support</strong> — we're here after opening night too.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="contact-right reveal">
+
+    <div class="quote-form" id="quoteForm">
+
+      <h3>Request a Quote</h3>
+
+      <div id="formFields">
+
+        <form id="quoteFormElement">
+
+          <div class="form-grid">
+
+            <div class="form-row">
+              <label>Your Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Jane Smith"
+                required
+              >
+            </div>
+
+            <div class="form-row">
+              <label>Shop / Business Name</label>
+              <input
+                type="text"
+                name="business"
+                placeholder="The Little Florist"
+                required
+              >
+            </div>
+
+          </div>
+
+          <div class="form-grid">
+
+            <div class="form-row">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="jane@yourshop.com"
+                required
+              >
+            </div>
+
+            <div class="form-row">
+              <label>City / Location</label>
+              <input
+                type="text"
+                name="city"
+                placeholder="Your city"
+                required
+              >
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <label>Type of Shop</label>
+
+            <select name="shopType" required>
+              <option value="" disabled selected>Select your shop type</option>
+              <option>Clothing &amp; Fashion Boutique</option>
+              <option>Florist &amp; Plant Shop</option>
+              <option>Jewelry &amp; Accessories</option>
+              <option>Bookshop &amp; Gift Store</option>
+              <option>Bakery &amp; Food</option>
+              <option>Spa / Wellness / Studio</option>
+              <option>Other</option>
+            </select>
+
+          </div>
+
+          <div class="form-row">
+
+            <label>What interests you? (select all that apply)</label>
+
+            <div class="checkbox-group">
+
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="Kinetic / motion display"
+                >
+                Kinetic / motion display
+              </label>
+
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="3D printed sculpture"
+                >
+                3D printed sculpture
+              </label>
+
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="Hand-painted artwork"
+                >
+                Hand-painted artwork
+              </label>
+
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="Seasonal / themed display"
+                >
+                Seasonal / themed display
+              </label>
+
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="Not sure yet — open to ideas"
+                >
+                Not sure yet — open to ideas
+              </label>
+
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <label>Tell us about your vision</label>
+
+            <textarea
+              name="vision"
+              placeholder="What do you want people to feel when they see your window? Any themes, colours, or ideas in mind? Don't worry if it's vague — that's what we're here for."
+              required
+            ></textarea>
+
+          </div>
+
+          <button
+            type="submit"
+            class="form-submit"
+            id="submitBtn"
+          >
+            <span>Send My Request →</span>
+          </button>
+
+        </form>
+
+      </div>
+
+      <div class="success-msg" id="successMsg">
+
+        <h3>
+          Request <em>received.</em>
+        </h3>
+
+        <p>
+          Thank you — we'll be in touch within 24 hours to start the conversation.
+          <br>
+          In the meantime, feel free to follow us at
+          <strong>@Tajtechdesign</strong>.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  <div class="footer-logo">
+    Taj <span>Tech <span>Design </span></span>
+  </div>
+
+  <div class="footer-tagline">
+    Engineering Wonder · Custom Window Displays
+  </div>
+
+  <div class="footer-copy">
+    © 2026 Taj Tech Design LLC
+  </div>
+</footer>
+
+<script src="main.js"></script>
+
+<script>
+
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxB5UJwDiqq7AdVsu21XkqcTxtxQBqBGM-ZfYers2SrzxEnVD1ZOM6Wjr3M7rbNiJvwDQ/exec";
+
+
+document
+  .getElementById("quoteFormElement")
+  .addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const form = this;
+
+    const button = document.getElementById("submitBtn");
+
+    const buttonText = button.querySelector("span");
+
+    button.disabled = true;
+
+    buttonText.textContent = "Sending...";
+
+
+    const formData = new FormData(form);
+
+
+    const data = {
+
+      name: formData.get("name"),
+
+      business: formData.get("business"),
+
+      email: formData.get("email"),
+
+      city: formData.get("city"),
+
+      shopType: formData.get("shopType"),
+
+      interests: formData.getAll("interests").join(", "),
+
+      vision: formData.get("vision")
+
+    };
+
+
+    try {
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(data)
+
+      });
+
+
+      form.reset();
+
+
+      document.getElementById("formFields").style.display = "none";
+
+      document.getElementById("successMsg").style.display = "block";
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      button.disabled = false;
+
+      buttonText.textContent = "Send My Request →";
+
+      alert("Sorry, something went wrong. Please try again.");
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
