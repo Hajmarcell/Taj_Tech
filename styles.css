@@ -30,19 +30,36 @@ html { scroll-behavior:smooth; }
 */
 
 :root {
-  --night:     #263C34;
-  --dusk:      #1D2E28;
-  --dusk-mid:  #34483E;
-  --cream:     #F4EBDD;
+  /* Core brand colors */
+  --night:      #19231F;
+  --dusk:       #263D32;
+  --dusk-mid:   #34483E;
 
-  --orange:    #E85D35;
-  --blue:      #287C78;
-  --blue-deep: #1E625E;
-  --blue-dim:  rgba(40,124,120,0.12);
+  /* Warm editorial palette */
+  --cream:      #F5EBDD;
+  --paper:      #FFFAF2;
+  --orange:     #E65335;
+  --orange-deep:#C83F27;
 
-  --gold:      #E8B94F;
-  --muted:     #8D8779;
-  --muted-lt:  #B7AE9E;
+  /* Colorful accents */
+  --blue:       #278C87;
+  --blue-deep:  #1D6965;
+  --blue-dim:   rgba(39, 140, 135, 0.12);
+  --gold:       #E9B949;
+  --cobalt:     #3155C9;
+  --pink:       #E9A0A0;
+
+  /* Text and borders */
+  --muted:      #898477;
+  --muted-lt:   #BDB4A5;
+  --ink:        #26352D;
+  --border-light: rgba(38, 61, 50, 0.16);
+
+  /* Shared design details */
+  --radius-sm:  4px;
+  --radius-md:  10px;
+  --radius-lg:  18px;
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body {
