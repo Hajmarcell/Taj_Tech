@@ -181,14 +181,21 @@
   color:var(--muted-lt);
   cursor:none;
 }
-
-.checkbox-label input[type="checkbox"] {
+  
+.form-row .checkbox-label input[type="checkbox"] {
   width:14px;
   height:14px;
+  padding:0;
+  margin:0;
+  flex-shrink:0;
+  appearance:auto;
+  -webkit-appearance:checkbox;
+  background:none;
+  border:none;
   accent-color:var(--orange);
   cursor:none;
 }
-
+  
 .checkbox-label:hover {
   color:var(--cream);
 }
