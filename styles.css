@@ -159,3 +159,189 @@ footer::before { content:'';position:absolute;top:-1px;left:5rem;right:5rem;heig
 @media(max-width:600px){
   footer { padding:2rem 1.5rem; }
 }
+
+
+/* =========================================
+   VITRINE TAJ — ECLECTIC EDITORIAL THEME add on 
+   ========================================= */
+
+/* Shared transitions */
+.btn-fill,
+.btn-ghost,
+.btn-line,
+.nav-cta,
+.nav-links a {
+  transition-timing-function: var(--ease-brand);
+}
+
+/* LIGHT EDITORIAL SECTIONS
+   Add class="section-light" to a section */
+.section-light {
+  background: var(--paper);
+  color: var(--ink);
+  position: relative;
+}
+
+.section-light .section-heading,
+.section-light h1,
+.section-light h2,
+.section-light h3 {
+  color: var(--ink);
+}
+
+.section-light .section-heading em,
+.section-light h1 em,
+.section-light h2 em {
+  color: var(--orange);
+}
+
+.section-light p {
+  color: #625F55;
+}
+
+.section-light .section-label,
+.section-light .page-hero-eyebrow {
+  color: var(--blue-deep);
+}
+
+.section-light .section-label::after,
+.section-light .page-hero-eyebrow::before {
+  background: var(--orange);
+}
+
+/* DARK EDITORIAL SECTIONS */
+.section-dark {
+  background: var(--night);
+  color: var(--cream);
+  position: relative;
+}
+
+.section-dark .section-heading,
+.section-dark h1,
+.section-dark h2,
+.section-dark h3 {
+  color: var(--cream);
+}
+
+.section-dark .section-heading em,
+.section-dark h1 em,
+.section-dark h2 em {
+  color: var(--gold);
+}
+
+/* BOLD COLOR-BLOCK SECTIONS */
+.section-color {
+  background: var(--orange);
+  color: var(--cream);
+  position: relative;
+}
+
+.section-color .section-heading,
+.section-color h1,
+.section-color h2,
+.section-color h3 {
+  color: var(--cream);
+}
+
+.section-color .section-heading em,
+.section-color h1 em,
+.section-color h2 em {
+  color: var(--night);
+}
+
+/* Optional teal variation */
+.section-teal {
+  background: var(--blue);
+  color: var(--paper);
+  position: relative;
+}
+
+.section-teal .section-heading,
+.section-teal h1,
+.section-teal h2,
+.section-teal h3 {
+  color: var(--paper);
+}
+
+/* Shared accent details */
+.accent-orange { color: var(--orange); }
+.accent-teal   { color: var(--blue); }
+.accent-gold   { color: var(--gold); }
+.accent-cobalt { color: var(--cobalt); }
+
+/* Button palette */
+.btn-fill {
+  background: var(--orange);
+  color: #FFFAF2;
+  border-radius: var(--radius-sm);
+}
+
+.btn-fill::after {
+  background: var(--blue-deep);
+}
+
+.btn-ghost {
+  border-color: var(--blue);
+  color: var(--blue);
+  border-radius: var(--radius-sm);
+}
+
+.btn-ghost:hover {
+  background: var(--blue);
+  color: #FFFAF2;
+}
+
+.nav-cta {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--night);
+}
+
+/* More editorial image treatments */
+.image-editorial {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.image-playful {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Restore a usable pointer on touch-first devices */
+@media (hover: none), (pointer: coarse) {
+  body,
+  a,
+  button,
+  .btn-fill,
+  .btn-ghost,
+  .btn-line,
+  .nav-hamburger {
+    cursor: auto;
+  }
+
+  .cur,
+  .cur-r {
+    display: none;
+  }
+}
