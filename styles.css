@@ -13,7 +13,7 @@
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 
-/*
+
 :root {
   --night:      #0a0907;
   --dusk:       #161310;
@@ -26,40 +26,6 @@ html { scroll-behavior:smooth; }
   --gold:       #c9953a;
   --muted:      #7a7060;
   --muted-lt:   #9a8f80;
-}
-*/
-
-:root {
-  /* Core brand colors */
-  --night:      #19231F;
-  --dusk:       #263D32;
-  --dusk-mid:   #34483E;
-
-  /* Warm editorial palette */
-  --cream:      #F5EBDD;
-  --paper:      #FFFAF2;
-  --orange:     #E65335;
-  --orange-deep:#C83F27;
-
-  /* Colorful accents */
-  --blue:       #278C87;
-  --blue-deep:  #1D6965;
-  --blue-dim:   rgba(39, 140, 135, 0.12);
-  --gold:       #E9B949;
-  --cobalt:     #3155C9;
-  --pink:       #E9A0A0;
-
-  /* Text and borders */
-  --muted:      #898477;
-  --muted-lt:   #BDB4A5;
-  --ink:        #26352D;
-  --border-light: rgba(38, 61, 50, 0.16);
-
-  /* Shared design details */
-  --radius-sm:  4px;
-  --radius-md:  10px;
-  --radius-lg:  18px;
-  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body {
